@@ -14,40 +14,49 @@ export default function Header() {
   const page = PAGE_TITLES[location.pathname] || { title: 'GoFinancy', subtitle: '' };
 
   return (
-    <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between px-6 sticky top-0 z-40">
-
-      {/* Page title */}
+    <header
+      className="h-16 flex items-center justify-between px-6 sticky top-0 z-40"
+      style={{
+        backgroundColor: 'var(--bg-card)',
+        borderBottom: '1px solid var(--border-card)',
+        boxShadow: '0 1px 8px rgba(16,185,129,0.06)',
+      }}
+    >
       <div>
-        <h1 className="text-base font-bold text-slate-900">{page.title}</h1>
-        <p className="text-xs text-slate-400">{page.subtitle}</p>
+        <h1 className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>{page.title}</h1>
+        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{page.subtitle}</p>
       </div>
 
-      {/* Right side */}
       <div className="flex items-center gap-3">
-
-        {/* Role switcher */}
-        <div className="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-1.5">
-          <span className="text-xs text-slate-500 font-medium">Role:</span>
+        <div
+          className="flex items-center gap-2 rounded-lg px-3 py-1.5"
+          style={{ backgroundColor: 'var(--bg-page)', border: '1px solid var(--border-card)' }}
+        >
+          <span className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>Role:</span>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="text-xs font-semibold text-slate-800 bg-transparent outline-none cursor-pointer"
+            className="text-xs font-semibold bg-transparent outline-none cursor-pointer"
+            style={{ color: 'var(--text-primary)' }}
           >
             <option value="viewer">Viewer</option>
             <option value="admin">Admin</option>
           </select>
         </div>
 
-        {/* Notification bell */}
-        <button className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200">
+        <button
+          className="w-8 h-8 rounded-lg flex items-center justify-center"
+          style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-muted)' }}
+        >
           <Bell size={15} />
         </button>
 
-        {/* Avatar */}
-        <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center">
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center"
+          style={{ backgroundColor: 'var(--accent)' }}
+        >
           <span className="text-white text-xs font-bold">JD</span>
         </div>
-
       </div>
     </header>
   );

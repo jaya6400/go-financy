@@ -1,6 +1,5 @@
 import { ArrowUpRight, ArrowDownLeft } from 'lucide-react';
-import { formatCurrency, formatDate } from '../../utils';
-import { CATEGORY_COLORS } from '../../utils';
+import { formatCurrency, formatDate, CATEGORY_COLORS } from '../../utils';
 import useFinanceStore from '../../store/useFinanceStore';
 import clsx from 'clsx';
 import { useNavigate } from 'react-router-dom';
@@ -14,8 +13,8 @@ export default function RecentTransactions() {
     .slice(0, 5);
 
   return (
-    <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm h-full flex flex-col">
+      <div className="flex items-center justify-between mb-4 shrink-0">
         <div>
           <h2 className="text-sm font-bold text-slate-900">Recent Transactions</h2>
           <p className="text-xs text-slate-400 mt-0.5">Last 5 transactions</p>
@@ -28,29 +27,24 @@ export default function RecentTransactions() {
         </button>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2 overflow-y-auto flex-1">
         {recent.map((txn) => (
-          <div key={txn.id} className="flex items-center justify-between">
-            {/* Icon + info */}
+          <div key={txn.id} className="flex items-center justify-between py-1.5 border-b border-slate-50 last:border-0">
             <div className="flex items-center gap-3">
-              <div
-                className={clsx(
-                  'w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0',
-                  txn.type === 'credit' ? 'bg-emerald-50' : 'bg-rose-50'
-                )}
-              >
+              <div className={clsx(
+                'w-8 h-8 rounded-xl flex items-center justify-center shrink-0',
+                txn.type === 'credit' ? 'bg-emerald-50' : 'bg-rose-50'
+              )}>
                 {txn.type === 'credit'
-                  ? <ArrowDownLeft size={16} className="text-emerald-600" />
-                  : <ArrowUpRight size={16} className="text-rose-500" />
+                  ? <ArrowDownLeft size={15} className="text-emerald-600" />
+                  : <ArrowUpRight size={15} className="text-rose-500" />
                 }
               </div>
               <div>
-                <p className="text-sm font-medium text-slate-800 leading-tight">{txn.merchant}</p>
+                <p className="text-sm font-semibold text-slate-800 leading-tight">{txn.merchant}</p>
                 <p className="text-xs text-slate-400">{formatDate(txn.date)}</p>
               </div>
             </div>
-
-            {/* Amount + category */}
             <div className="text-right">
               <p className={clsx(
                 'text-sm font-bold',

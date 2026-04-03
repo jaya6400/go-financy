@@ -1,6 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { groupByMonth } from '../../utils';
-import { formatCurrency } from '../../utils';
+import { groupByMonth, formatCurrency } from '../../utils';
 import useFinanceStore from '../../store/useFinanceStore';
 import { format, parseISO } from 'date-fns';
 
@@ -38,21 +37,11 @@ export default function BalanceTrend() {
         <p className="text-xs text-slate-400 mt-0.5">Monthly income vs expenses overview</p>
       </div>
 
-      <ResponsiveContainer width="100%" height={240}>
-        <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+      <ResponsiveContainer width="100%" height={220}>
+        <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-          <XAxis
-            dataKey="month"
-            tick={{ fontSize: 11, fill: '#94a3b8' }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <YAxis
-            tick={{ fontSize: 11, fill: '#94a3b8' }}
-            axisLine={false}
-            tickLine={false}
-            tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
-          />
+          <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
           <Tooltip content={<CustomTooltip />} />
           <Line type="monotone" dataKey="Income" stroke="#10b981" strokeWidth={2.5} dot={{ r: 4, fill: '#10b981' }} />
           <Line type="monotone" dataKey="Expenses" stroke="#f43f5e" strokeWidth={2.5} dot={{ r: 4, fill: '#f43f5e' }} />
@@ -60,7 +49,6 @@ export default function BalanceTrend() {
         </LineChart>
       </ResponsiveContainer>
 
-      {/* Legend */}
       <div className="flex items-center gap-4 mt-3 justify-center">
         {[
           { label: 'Income', color: '#10b981' },

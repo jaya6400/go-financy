@@ -10,21 +10,21 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="fixed top-0 left-0 h-screen w-60 bg-slate-900 flex flex-col z-50">
-
-      {/* Logo */}
-      <div className="px-6 py-6 border-b border-slate-800">
+    <aside
+      className="fixed top-0 left-0 h-screen w-60 flex-col z-50 hidden lg:flex"
+      style={{ backgroundColor: 'var(--sidebar-bg)' }}
+    >
+      <div className="px-6 py-6 border-b border-white/5">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: 'var(--accent)' }}>
             <TrendingUp size={16} className="text-white" strokeWidth={2.5} />
           </div>
           <span className="text-white font-bold text-lg tracking-tight">
-            Go<span className="text-emerald-400">Financy</span>
+            Go<span style={{ color: '#34d399' }}>Financy</span>
           </span>
         </div>
       </div>
 
-      {/* Nav */}
       <nav className="flex-1 px-3 py-6 flex flex-col gap-1">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
@@ -32,12 +32,13 @@ export default function Sidebar() {
             to={to}
             className={({ isActive }) =>
               clsx(
-                'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium',
+                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all',
                 isActive
-                  ? 'bg-emerald-500 text-white'
-                  : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                  ? 'text-white'
+                  : 'text-white/40 hover:text-white/80 hover:bg-white/5'
               )
             }
+            style={({ isActive }) => isActive ? { backgroundColor: 'var(--accent)' } : {}}
           >
             <Icon size={18} />
             {label}
@@ -45,9 +46,8 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
-      <div className="px-6 py-4 border-t border-slate-800">
-        <p className="text-slate-500 text-xs">v1.0.0 · GoFinancy</p>
+      <div className="px-6 py-4 border-t border-white/5">
+        <p className="text-white/20 text-xs">v1.0.0 · GoFinancy</p>
       </div>
     </aside>
   );

@@ -1,40 +1,43 @@
 import { TrendingUp, TrendingDown, Wallet, PiggyBank } from 'lucide-react';
 import { formatCurrency, formatPercent } from '../../utils';
 import useFinanceStore from '../../store/useFinanceStore';
-import clsx from 'clsx';
 
 const cards = [
   {
     key: 'balance',
     label: 'Total Balance',
     icon: Wallet,
-    iconBg: 'bg-emerald-50',
-    iconColor: 'text-emerald-600',
-    valueColor: 'text-slate-900',
+    iconBg: '#dcfce7',
+    iconColor: '#059669',
+    valueColor: '#0d1f14',
+    accentColor: '#059669',
   },
   {
     key: 'totalIncome',
     label: 'Total Income',
     icon: TrendingUp,
-    iconBg: 'bg-blue-50',
-    iconColor: 'text-blue-600',
-    valueColor: 'text-emerald-600',
+    iconBg: '#dbeafe',
+    iconColor: '#2563eb',
+    valueColor: '#059669',
+    accentColor: '#2563eb',
   },
   {
     key: 'totalExpenses',
     label: 'Total Expenses',
     icon: TrendingDown,
-    iconBg: 'bg-rose-50',
-    iconColor: 'text-rose-600',
-    valueColor: 'text-rose-600',
+    iconBg: '#ffe4e6',
+    iconColor: '#e11d48',
+    valueColor: '#e11d48',
+    accentColor: '#e11d48',
   },
   {
     key: 'savingsRate',
     label: 'Savings Rate',
     icon: PiggyBank,
-    iconBg: 'bg-amber-50',
-    iconColor: 'text-amber-600',
-    valueColor: 'text-slate-900',
+    iconBg: '#fef3c7',
+    iconColor: '#d97706',
+    valueColor: '#0d1f14',
+    accentColor: '#d97706',
   },
 ];
 
@@ -60,27 +63,34 @@ export default function SummaryCards() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-      {cards.map(({ key, label, icon: Icon, iconBg, iconColor, valueColor }) => (
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
+      {cards.map(({ key, label, icon: Icon, iconBg, iconColor, valueColor, accentColor }) => (
         <div
           key={key}
-          className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-200"
+          className="rounded-2xl p-5 hover:-translate-y-0.5 cursor-default"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border-card)',
+            boxShadow: 'var(--shadow-card)',
+            borderLeft: `4px solid ${accentColor}`,
+          }}
+          onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'}
+          onMouseLeave={e => e.currentTarget.style.boxShadow = 'var(--shadow-card)'}
         >
-          {/* Top row */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-slate-500">{label}</span>
-            <div className={clsx('w-9 h-9 rounded-xl flex items-center justify-center', iconBg)}>
-              <Icon size={18} className={iconColor} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
+              {label}
+            </span>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: iconBg }}>
+              <Icon size={20} style={{ color: iconColor }} />
             </div>
           </div>
-
-          {/* Value */}
-          <p className={clsx('text-2xl font-bold tracking-tight', valueColor)}>
+          <p className="text-2xl font-extrabold tracking-tight" style={{ color: valueColor }}>
             {getValue(key)}
           </p>
-
-          {/* Subtext */}
-          <p className="text-xs text-slate-400 mt-1">{getSubtext(key)}</p>
+          <p className="text-xs mt-1.5 font-medium" style={{ color: 'var(--text-muted)' }}>
+            {getSubtext(key)}
+          </p>
         </div>
       ))}
     </div>

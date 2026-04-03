@@ -3,21 +3,24 @@ import { SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions } fro
 export default function Dashboard() {
   return (
     <div className="flex flex-col gap-5">
-      {/* Row 1 — Summary cards */}
-      <SummaryCards />
 
-      {/* Row 2 — Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <div className="lg:col-span-2">
+      <div className="px-1">
+        <SummaryCards />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="md:col-span-2">
           <BalanceTrend />
         </div>
-        <div className="lg:col-span-1">
+        <div className="md:col-span-1">
           <SpendingBreakdown />
         </div>
       </div>
 
-      {/* Row 3 — Recent transactions */}
-      <RecentTransactions />
+      <div>
+        <RecentTransactions />
+      </div>
+
     </div>
   );
 }
