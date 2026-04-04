@@ -2,12 +2,10 @@ import { SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions } fro
 
 export default function Dashboard() {
   return (
-    <div className="flex flex-col gap-5">
-
-      <div className="px-1">
+    <div className="flex flex-col gap-5 pl-1">
+      <div>
         <SummaryCards />
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="md:col-span-2">
           <BalanceTrend />
@@ -16,11 +14,9 @@ export default function Dashboard() {
           <SpendingBreakdown />
         </div>
       </div>
-
       <div>
         <RecentTransactions />
       </div>
-
     </div>
   );
 }
