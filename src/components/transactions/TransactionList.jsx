@@ -2,6 +2,7 @@ import { formatCurrency, formatDate, CATEGORY_COLORS } from '../../utils';
 import { ArrowUpRight, ArrowDownLeft, Edit2, Trash2, ArrowLeftRight } from 'lucide-react';
 import useFinanceStore from '../../store/useFinanceStore';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 
 export default function TransactionList({ onEdit }) {
   const { role, deleteTransaction, getFilteredTransactions } = useFinanceStore();
@@ -54,10 +55,16 @@ export default function TransactionList({ onEdit }) {
 
       {/* Rows */}
       <div className="divide-y" style={{ borderColor: 'var(--border-card)' }}>
-        {transactions.map((txn) => (
-          <div
+        {transactions.map((txn, i) => (
+          <motion.div
             key={txn.id}
-            className="grid grid-cols-12 px-5 py-3.5 items-center hover:bg-emerald-50/40 transition-colors"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.04, duration: 0.3 }}
+            className="grid grid-cols-12 px-5 py-3.5 items-center"
+            style={{ cursor: 'default' }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-page)'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
           >
             {/* Merchant */}
             <div className="col-span-4 flex items-center gap-3">
@@ -136,7 +143,7 @@ export default function TransactionList({ onEdit }) {
                 </button>
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
 

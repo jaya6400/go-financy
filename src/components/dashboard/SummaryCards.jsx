@@ -1,6 +1,7 @@
 import { TrendingUp, TrendingDown, Wallet, PiggyBank } from 'lucide-react';
 import { formatCurrency, formatPercent } from '../../utils';
 import useFinanceStore from '../../store/useFinanceStore';
+import { motion } from 'framer-motion';
 
 const cards = [
   { key: 'balance', label: 'Total Balance', icon: Wallet, iconBg: '#dcfce7', iconColor: '#059669', valueColor: '#059669', accentColor: '#059669' },
@@ -31,10 +32,19 @@ export default function SummaryCards() {
   };
 
   return (
-    <div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
+    <motion.div
+      className="grid grid-cols-2 xl:grid-cols-4 gap-5"
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+      initial="hidden"
+      animate="show"
+    >
       {cards.map(({ key, label, icon: Icon, iconBg, iconColor, valueColor, accentColor }) => (
-        <div
+        <motion.div
           key={key}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+          }}
           className="rounded-2xl p-5 cursor-default"
           style={{
             backgroundColor: 'var(--bg-card)',
@@ -59,8 +69,8 @@ export default function SummaryCards() {
           <p className="text-xs mt-1.5 font-medium" style={{ color: 'var(--text-muted)' }}>
             {getSubtext(key)}
           </p>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
