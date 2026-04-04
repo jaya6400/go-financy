@@ -22,6 +22,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default function MonthlyComparison() {
   const transactions = useFinanceStore((s) => s.transactions);
   const monthly = groupByMonth(transactions);
+  const darkMode = useFinanceStore((s) => s.darkMode);
 
   const data = monthly.map((m) => ({
     month: format(parseISO(`${m.month}-01`), 'MMM yy'),
@@ -46,9 +47,9 @@ export default function MonthlyComparison() {
 
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }} barGap={4}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e6f4ed" />
-          <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#6b7f74' }} axisLine={false} tickLine={false} />
-          <YAxis tick={{ fontSize: 11, fill: '#6b7f74' }} axisLine={false} tickLine={false} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
+          <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? '#21262d' : '#e6f4ed'} />
+          <XAxis dataKey="month" tick={{ fontSize: 11, fill: darkMode ? '#7d8590' : '#6b7f74' }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fontSize: 11, fill: darkMode ? '#7d8590' : '#6b7f74' }} axisLine={false} tickLine={false} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="Income" fill="#059669" radius={[6, 6, 0, 0]} />
           <Bar dataKey="Expenses" fill="#e11d48" radius={[6, 6, 0, 0]} />

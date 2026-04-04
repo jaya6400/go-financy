@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Bell } from 'lucide-react';
+import { Bell, Sun, Moon } from 'lucide-react';
 import useFinanceStore from '../../store/useFinanceStore';
 
 const PAGE_TITLES = {
@@ -10,7 +10,7 @@ const PAGE_TITLES = {
 
 export default function Header() {
   const location = useLocation();
-  const { role, setRole } = useFinanceStore();
+  const { role, setRole, darkMode, toggleDarkMode } = useFinanceStore();
   const page = PAGE_TITLES[location.pathname] || { title: 'GoFinancy', subtitle: '' };
 
   return (
@@ -28,6 +28,8 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
+
+        {/* Role switcher */}
         <div
           className="flex items-center gap-2 rounded-lg px-3 py-1.5"
           style={{ backgroundColor: 'var(--bg-page)', border: '1px solid var(--border-card)' }}
@@ -44,19 +46,36 @@ export default function Header() {
           </select>
         </div>
 
+        {/* Dark mode toggle */}
+        <button
+          onClick={toggleDarkMode}
+          className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+          style={{
+            backgroundColor: 'var(--bg-page)',
+            border: '1px solid var(--border-card)',
+            color: 'var(--text-muted)',
+          }}
+          title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {darkMode ? <Sun size={15} /> : <Moon size={15} />}
+        </button>
+
+        {/* Bell */}
         <button
           className="w-8 h-8 rounded-lg flex items-center justify-center"
-          style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-muted)' }}
+          style={{ backgroundColor: 'var(--bg-page)', border: '1px solid var(--border-card)', color: 'var(--text-muted)' }}
         >
           <Bell size={15} />
         </button>
 
+        {/* Avatar */}
         <div
           className="w-8 h-8 rounded-full flex items-center justify-center"
           style={{ backgroundColor: 'var(--accent)' }}
         >
           <span className="text-white text-xs font-bold">JD</span>
         </div>
+
       </div>
     </header>
   );

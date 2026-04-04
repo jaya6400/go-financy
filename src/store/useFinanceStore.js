@@ -22,6 +22,8 @@ const useFinanceStore = create(
       transactions: mockTransactions,
       filters: initialFilters,
       role: "viewer",   // "viewer" | "admin"
+      darkMode: false,
+      toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
 
       // ─── Role Actions ────────────────────────────────────
       setRole: (role) => set({ role }),
@@ -120,6 +122,7 @@ const useFinanceStore = create(
       partialState: (state) => ({
         transactions: state.transactions,
         role: state.role,
+        darkMode: state.darkMode,
       }),
     }
   )

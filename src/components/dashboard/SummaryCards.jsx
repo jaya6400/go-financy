@@ -3,42 +3,10 @@ import { formatCurrency, formatPercent } from '../../utils';
 import useFinanceStore from '../../store/useFinanceStore';
 
 const cards = [
-  {
-    key: 'balance',
-    label: 'Total Balance',
-    icon: Wallet,
-    iconBg: '#dcfce7',
-    iconColor: '#059669',
-    valueColor: '#0d1f14',
-    accentColor: '#059669',
-  },
-  {
-    key: 'totalIncome',
-    label: 'Total Income',
-    icon: TrendingUp,
-    iconBg: '#dbeafe',
-    iconColor: '#2563eb',
-    valueColor: '#059669',
-    accentColor: '#2563eb',
-  },
-  {
-    key: 'totalExpenses',
-    label: 'Total Expenses',
-    icon: TrendingDown,
-    iconBg: '#ffe4e6',
-    iconColor: '#e11d48',
-    valueColor: '#e11d48',
-    accentColor: '#e11d48',
-  },
-  {
-    key: 'savingsRate',
-    label: 'Savings Rate',
-    icon: PiggyBank,
-    iconBg: '#fef3c7',
-    iconColor: '#d97706',
-    valueColor: '#0d1f14',
-    accentColor: '#d97706',
-  },
+  { key: 'balance', label: 'Total Balance', icon: Wallet, iconBg: '#dcfce7', iconColor: '#059669', valueColor: '#059669', accentColor: '#059669' },
+  { key: 'totalIncome', label: 'Total Income', icon: TrendingUp, iconBg: '#dbeafe', iconColor: '#2563eb', valueColor: '#2563eb', accentColor: '#2563eb' },
+  { key: 'totalExpenses', label: 'Total Expenses', icon: TrendingDown, iconBg: '#ffe4e6', iconColor: '#e11d48', valueColor: '#e11d48', accentColor: '#e11d48' },
+  { key: 'savingsRate', label: 'Savings Rate', icon: PiggyBank, iconBg: '#fef3c7', iconColor: '#d97706', valueColor: '#d97706', accentColor: '#d97706' },
 ];
 
 export default function SummaryCards() {
@@ -67,7 +35,7 @@ export default function SummaryCards() {
       {cards.map(({ key, label, icon: Icon, iconBg, iconColor, valueColor, accentColor }) => (
         <div
           key={key}
-          className="rounded-2xl p-5 hover:-translate-y-0.5 cursor-default"
+          className="rounded-2xl p-5 cursor-default"
           style={{
             backgroundColor: 'var(--bg-card)',
             border: '1px solid var(--border-card)',
