@@ -137,7 +137,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
           className="w-full flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 transition-colors"
         >
           <img
-            src="https://ui-avatars.com/api/?name=Jaya+Dubey&background=059669&color=fff&size=64&bold=true&rounded=true"
+            src="public/avatar.png"
             alt="Jaya"
             className="w-8 h-8 rounded-full shrink-0"
           />
