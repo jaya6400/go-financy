@@ -35,6 +35,7 @@ body {
   background-color: var(--bg-page);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  user-select: none;
 }
 
 ::-webkit-scrollbar { width: 4px; }
@@ -75,4 +76,11 @@ nav,
 /* Prevent CSS transitions from interfering with Framer Motion */
 .framer-motion-element {
   transition: none !important;
+}
+
+/* Re-enable only where needed */
+input,
+textarea,
+[contenteditable] {
+  user-select: text;
 }

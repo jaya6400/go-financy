@@ -3,6 +3,7 @@ import useFinanceStore from '../../store/useFinanceStore';
 import { CATEGORIES, PAYMENT_MODES } from '../../data';
 import { getUniqueMonths } from '../../utils';
 import { format, parseISO } from 'date-fns';
+import { blockquote } from 'framer-motion/client';
 
 export default function TransactionFilters() {
   const { filters, setFilter, resetFilters, transactions } = useFinanceStore();
@@ -30,21 +31,19 @@ export default function TransactionFilters() {
       }}
     >
       {/* Search */}
-      <div className="relative flex-1 min-w-48">
-        <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} />
-        <input
-          type="text"
-          placeholder="Search merchant, category..."
-          value={filters.search}
-          onChange={(e) => setFilter('search', e.target.value)}
-          className="w-full text-xs rounded-lg pl-8 pr-3 py-2 outline-none border"
-          style={{
-            backgroundColor: '#f4fbf7',
-            borderColor: 'var(--border-card)',
-            color: 'var(--text-primary)',
-          }}
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Search merchant, category..."
+        value={filters.search}
+        onChange={(e) => setFilter('search', e.target.value)}
+        className="w-full text-xs rounded-lg outline-none border"
+        style={{
+          backgroundColor: 'var(--bg-page)',
+          borderColor: 'var(--border-card)',
+          color: 'var(--text-primary)',
+          padding: '8px 12px 8px 32px',
+        }}
+      />
 
       {/* Category */}
       <select value={filters.category} onChange={(e) => setFilter('category', e.target.value)} className={selectClass} style={selectStyle}>
