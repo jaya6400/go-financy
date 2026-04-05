@@ -67,7 +67,7 @@ export default function SpendingBreakdown() {
                 <Cell key={index} fill={entry.color} />
               ))}
             </Pie>
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip />} cursor={false} />
           </PieChart>
        </ResponsiveContainer>
       </div>

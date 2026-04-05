@@ -2,7 +2,7 @@ import { SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions } fro
 
 export default function Dashboard() {
   return (
-    <div className="flex flex-col gap-5 pl-1">
+    <div className="flex flex-col gap-5 max-w-screen-xl mx-auto w-full">
       <div>
         <SummaryCards />
       </div>

@@ -46,3 +46,28 @@ body {
   transition-duration: 150ms;
   transition-timing-function: ease;
 }
+
+/* Disable text selection on UI elements */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-layer {
+  user-select: none;
+  outline: none;
+}
+
+/* Disable focus outline on chart click */
+.recharts-wrapper:focus,
+.recharts-wrapper *:focus {
+  outline: none;
+}
+
+/* Disable text selection on cards and buttons */
+button,
+[role="button"] {
+  user-select: none;
+}
+
+nav,
+.recharts-wrapper {
+  user-select: none;
+}

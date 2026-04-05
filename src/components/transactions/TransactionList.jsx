@@ -40,15 +40,15 @@ export default function TransactionList({ onEdit }) {
       <div
         className="grid grid-cols-12 px-5 py-3 text-xs font-semibold uppercase tracking-wider"
         style={{
-          backgroundColor: '#f0faf4',
+          backgroundColor: 'var(--bg-page)',
           color: 'var(--text-muted)',
           borderBottom: '1px solid var(--border-card)',
         }}
       >
-        <div className="col-span-4">Merchant / Description</div>
+        <div className="col-span-3">Merchant / Description</div>
         <div className="col-span-2">Category</div>
         <div className="col-span-2">Date</div>
-        <div className="col-span-1">Mode</div>
+        <div className="col-span-2">Mode</div>
         <div className="col-span-2 text-right">Amount</div>
         {role === 'admin' && <div className="col-span-1 text-right">Actions</div>}
       </div>
@@ -67,7 +67,7 @@ export default function TransactionList({ onEdit }) {
             onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
           >
             {/* Merchant */}
-            <div className="col-span-4 flex items-center gap-3">
+            <div className="col-span-3 flex items-center gap-3"> 
               <div
                 className={clsx(
                   'w-8 h-8 rounded-xl flex items-center justify-center shrink-0'

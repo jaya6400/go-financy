@@ -46,20 +46,6 @@ export default function Header() {
           </select>
         </div>
 
-        {/* Dark mode toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-          style={{
-            backgroundColor: 'var(--bg-page)',
-            border: '1px solid var(--border-card)',
-            color: 'var(--text-muted)',
-          }}
-          title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {darkMode ? <Sun size={15} /> : <Moon size={15} />}
-        </button>
-
         {/* Bell */}
         <button
           className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -67,15 +53,6 @@ export default function Header() {
         >
           <Bell size={15} />
         </button>
-
-        {/* Avatar */}
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: 'var(--accent)' }}
-        >
-          <span className="text-white text-xs font-bold">JD</span>
-        </div>
-
       </div>
     </header>
   );

@@ -115,7 +115,7 @@ export default function MonthlyComparison() {
             <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
             <XAxis dataKey="month" tick={{ fontSize: 11, fill: axisColor }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fontSize: 11, fill: axisColor }} axisLine={false} tickLine={false} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
             <Bar dataKey="Income" fill="#059669" radius={[6, 6, 0, 0]} />
             <Bar dataKey="Expenses" fill="#e11d48" radius={[6, 6, 0, 0]} />
             <Bar dataKey="Savings" fill="#6366f1" radius={[6, 6, 0, 0]} />

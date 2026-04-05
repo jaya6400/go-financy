@@ -10,18 +10,18 @@ export default function Insights() {
   const latest = monthly[monthly.length - 1];
   const previous = monthly[monthly.length - 2];
 
-  const savingsRate = latest
-    ? Math.round(((latest.income - latest.expenses) / latest.income) * 100)
-    : 0;
+  const savingsRate = latest && latest.income > 0
+  ? Math.round(((latest.income - latest.expenses) / latest.income) * 100)
+  : 0;
 
-  const spendingChange = latest && previous
+  const spendingChange = latest && previous && previous.expenses > 0
     ? Math.round(((latest.expenses - previous.expenses) / previous.expenses) * 100)
     : 0;
 
   const totalTransactions = transactions.length;
 
   return (
-    <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 max-w-screen-xl mx-auto w-full">
 
       {/* Insight cards row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
