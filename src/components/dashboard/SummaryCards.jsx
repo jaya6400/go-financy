@@ -25,9 +25,9 @@ export default function SummaryCards() {
     if (key === 'totalExpenses') return 'Debits across all time';
     if (key === 'savingsRate') {
       const rate = summary.savingsRate;
-      if (rate >= 30) return '🎯 Excellent saving habit';
-      if (rate >= 15) return '👍 Good, keep it up';
-      return '⚠️ Try to save more';
+      if (rate >= 30) return 'Excellent saving habit';
+      if (rate >= 15) return 'Good, keep it up';
+      return 'Try to save more';
     }
   };
 

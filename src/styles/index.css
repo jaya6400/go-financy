@@ -71,3 +71,8 @@ nav,
 .recharts-wrapper {
   user-select: none;
 }
+
+/* Prevent CSS transitions from interfering with Framer Motion */
+.framer-motion-element {
+  transition: none !important;
+}
