@@ -25,13 +25,13 @@ const generateObservations = (transactions) => {
 
   if (spendingChange > 0) {
     observations.push({
-      icon: '⚠️',
+      icon: '',
       text: `You spent ${spendingPct}% more in ${latest.month} compared to ${previous.month}. Keep an eye on your expenses.`,
       color: '#e11d48',
     });
   } else {
     observations.push({
-      icon: '✅',
+      icon: '',
       text: `Great job! You spent ${spendingPct}% less in ${latest.month} compared to ${previous.month}.`,
       color: '#059669',
     });
@@ -45,19 +45,19 @@ const generateObservations = (transactions) => {
 
   if (savingsRate >= 30) {
     observations.push({
-      icon: '🎯',
+      icon: '',
       text: `You saved ${savingsRate}% of your income last month — excellent financial discipline!`,
       color: '#059669',
     });
   } else if (savingsRate >= 10) {
     observations.push({
-      icon: '👍',
+      icon: '',
       text: `You saved ${savingsRate}% of your income last month. Try to push it above 30%.`,
       color: '#d97706',
     });
   } else {
     observations.push({
-      icon: '⚠️',
+      icon: '',
       text: `Your savings rate was only ${savingsRate}% last month. Consider cutting non-essential spending.`,
       color: '#e11d48',
     });
@@ -67,7 +67,7 @@ const generateObservations = (transactions) => {
   const topCat = getTopCategory(transactions);
   if (topCat) {
     observations.push({
-      icon: '🏆',
+      icon: '',
       text: `Your biggest spending category overall is ${topCat.name} at ${formatCurrency(topCat.value)}.`,
       color: topCat.color,
     });
@@ -80,13 +80,13 @@ const generateObservations = (transactions) => {
 
   if (isConsistent) {
     observations.push({
-      icon: '💼',
+      icon: '',
       text: `Your income has been consistent across all months — great financial stability.`,
       color: '#6366f1',
     });
   } else {
     observations.push({
-      icon: '📈',
+      icon: '',
       text: `Your income varies month to month. Consider building a 3-month emergency fund.`,
       color: '#d97706',
     });
@@ -100,14 +100,7 @@ export default function SmartObservations() {
   const observations = generateObservations(transactions);
 
   return (
-    <div
-      className="rounded-2xl p-5"
-      style={{
-        backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-card)',
-        boxShadow: 'var(--shadow-card)',
-      }}
-    >
+    <div className="card p-5">
       <div className="mb-4">
         <h2 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>Smart Observations</h2>
         <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>Insights generated from your data</p>

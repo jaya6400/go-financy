@@ -65,14 +65,7 @@ export default function MonthlyComparison() {
   };
 
   return (
-    <div
-      className="rounded-2xl p-5"
-      style={{
-        backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-card)',
-        boxShadow: 'var(--shadow-card)',
-      }}
-    >
+    <div className="card p-5">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>

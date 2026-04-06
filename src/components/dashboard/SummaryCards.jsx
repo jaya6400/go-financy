@@ -4,14 +4,51 @@ import useFinanceStore from '../../store/useFinanceStore';
 import { motion } from 'framer-motion';
 
 const cards = [
-  { key: 'balance', label: 'Total Balance', icon: Wallet, iconBg: '#dcfce7', iconColor: '#059669', valueColor: '#059669', accentColor: '#059669' },
-  { key: 'totalIncome', label: 'Total Income', icon: TrendingUp, iconBg: '#dbeafe', iconColor: '#2563eb', valueColor: '#2563eb', accentColor: '#2563eb' },
-  { key: 'totalExpenses', label: 'Total Expenses', icon: TrendingDown, iconBg: '#ffe4e6', iconColor: '#e11d48', valueColor: '#e11d48', accentColor: '#e11d48' },
-  { key: 'savingsRate', label: 'Savings Rate', icon: PiggyBank, iconBg: '#fef3c7', iconColor: '#d97706', valueColor: '#d97706', accentColor: '#d97706' },
+  {
+    key: 'balance',
+    label: 'Total Balance',
+    icon: Wallet,
+    iconBg: '#dcfce7',
+    iconBgDark: 'rgba(16,185,129,0.15)',
+    iconColor: '#059669',
+    valueColor: '#059669',
+    accentColor: '#059669',
+  },
+  {
+    key: 'totalIncome',
+    label: 'Total Income',
+    icon: TrendingUp,
+    iconBg: '#dbeafe',
+    iconBgDark: 'rgba(37,99,235,0.15)',
+    iconColor: '#2563eb',
+    valueColor: '#2563eb',
+    accentColor: '#2563eb',
+  },
+  {
+    key: 'totalExpenses',
+    label: 'Total Expenses',
+    icon: TrendingDown,
+    iconBg: '#ffe4e6',
+    iconBgDark: 'rgba(225,29,72,0.15)',
+    iconColor: '#e11d48',
+    valueColor: '#e11d48',
+    accentColor: '#e11d48',
+  },
+  {
+    key: 'savingsRate',
+    label: 'Savings Rate',
+    icon: PiggyBank,
+    iconBg: '#fef3c7',
+    iconBgDark: 'rgba(217,119,6,0.15)',
+    iconColor: '#d97706',
+    valueColor: '#d97706',
+    accentColor: '#d97706',
+  },
 ];
 
 export default function SummaryCards() {
   const getSummary = useFinanceStore((s) => s.getSummary);
+  const darkMode = useFinanceStore((s) => s.darkMode);
   const summary = getSummary();
 
   const getValue = (key) => {
@@ -25,9 +62,9 @@ export default function SummaryCards() {
     if (key === 'totalExpenses') return 'Debits across all time';
     if (key === 'savingsRate') {
       const rate = summary.savingsRate;
-      if (rate >= 30) return '🎯 Excellent saving habit';
-      if (rate >= 15) return '👍 Good, keep it up';
-      return '⚠️ Try to save more';
+      if (rate >= 30) return 'Excellent saving habit';
+      if (rate >= 15) return 'Good, keep it up';
+      return 'Try to save more';
     }
   };
 
@@ -38,35 +75,44 @@ export default function SummaryCards() {
       initial="hidden"
       animate="show"
     >
-      {cards.map(({ key, label, icon: Icon, iconBg, iconColor, valueColor, accentColor }) => (
+      {cards.map(({ key, label, icon: Icon, iconBg, iconBgDark, iconColor, valueColor, accentColor }) => (
         <motion.div
           key={key}
           variants={{
             hidden: { opacity: 0, y: 20 },
             show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
           }}
-          className="rounded-2xl p-5 cursor-default"
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            boxShadow: 'var(--shadow-card)',
-            borderLeft: `4px solid ${accentColor}`,
-          }}
+          className="card p-5 cursor-default"
+          style={{ borderLeft: `4px solid ${accentColor}` }}
           onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'}
           onMouseLeave={e => e.currentTarget.style.boxShadow = 'var(--shadow-card)'}
         >
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
+            <span
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: 'var(--text-muted)' }}
+            >
               {label}
             </span>
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: iconBg }}>
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: darkMode ? iconBgDark : iconBg }}
+            >
               <Icon size={20} style={{ color: iconColor }} />
             </div>
           </div>
-          <p className="text-2xl font-extrabold tracking-tight" style={{ color: valueColor }}>
+
+          <p
+            className="text-2xl font-extrabold tracking-tight"
+            style={{ color: valueColor }}
+          >
             {getValue(key)}
           </p>
-          <p className="text-xs mt-1.5 font-medium" style={{ color: 'var(--text-muted)' }}>
+
+          <p
+            className="text-xs mt-1.5 font-medium"
+            style={{ color: 'var(--text-muted)' }}
+          >
             {getSubtext(key)}
           </p>
         </motion.div>

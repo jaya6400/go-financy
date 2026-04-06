@@ -45,12 +45,7 @@ export default function ExportMenu({ transactions }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden z-50"
-            style={{
-              backgroundColor: 'var(--bg-card)',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
-            }}
+            className="card p-5 absolute right-0 mt-2 w-44 rounded-xl overflow-hidden z-50"
           >
             <button
               onClick={() => handleExport('csv')}
