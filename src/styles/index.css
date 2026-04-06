@@ -104,6 +104,22 @@ input {
   background-color: var(--bg-card); /* Uses the slightly lighter card color in dark mode */
 }
 
+/* Sidebar accordion — always dark, independent of theme */
+.sidebar-accordion {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.sidebar-accordion button {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.sidebar-accordion button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 
 
 
