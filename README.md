@@ -6,7 +6,7 @@ A clean, interactive personal finance dashboard built as a frontend screening as
 
 ## 🚀 Live Deployment
 
-> _Add your deployment link here (Vercel / Netlify)_
+> [Website Link](https://go-financy-jd.vercel.app/)
 
 ## 🚀 Demo
 
