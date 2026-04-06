@@ -10,7 +10,7 @@ A clean, interactive personal finance dashboard built as a frontend screening as
 
 ## 🚀 Demo
 
-> _Add your deployment link here (Vercel / Netlify)_
+> [Click to watch the demo](https://youtu.be/w1lbFFnJC-g?si=AZrDy-rj7-9yBAl0)
 
 ---
 
