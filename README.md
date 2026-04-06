@@ -205,7 +205,14 @@ I focused on getting the architecture right first (store, data model, utils) bef
 
 ## 📸 Screenshots
 
-> _Add screenshots here after recording_
+> Analytics of past month
+[Analytics](/public/insights.PNG)
+
+> Pulse Dashboard
+[Dashboard](/public/Pulse.PNG)
+
+> Add Transaction Card
+[Transaction](/public/transactions.PNG)
 
 ---
 
