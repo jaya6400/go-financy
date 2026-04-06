@@ -206,13 +206,13 @@ I focused on getting the architecture right first (store, data model, utils) bef
 ## 📸 Screenshots
 
 > Analytics of past month
-[Analytics](/public/insights.PNG)
+![Analytics](/public/insights.PNG)
 
 > Pulse Dashboard
-[Dashboard](/public/Pulse.PNG)
+![Dashboard](/public/Pulse.PNG)
 
 > Add Transaction Card
-[Transaction](/public/transactions.PNG)
+![Transaction](/public/transactions.PNG)
 
 ---
 
