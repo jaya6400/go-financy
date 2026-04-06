@@ -28,12 +28,7 @@ export default function TransactionList({ onEdit }) {
 
   return (
     <div
-      className="rounded-2xl overflow-hidden"
-      style={{
-        backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-card)',
-        boxShadow: 'var(--shadow-card)',
-      }}
+      className="card p-5 rounded-2xl overflow-hidden"
     >
       {/* Desktop table header */}
       <div

@@ -100,14 +100,7 @@ export default function SmartObservations() {
   const observations = generateObservations(transactions);
 
   return (
-    <div
-      className="rounded-2xl p-5"
-      style={{
-        backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-card)',
-        boxShadow: 'var(--shadow-card)',
-      }}
-    >
+    <div className="card p-5">
       <div className="mb-4">
         <h2 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>Smart Observations</h2>
         <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>Insights generated from your data</p>

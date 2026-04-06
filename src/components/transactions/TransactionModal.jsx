@@ -68,8 +68,9 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
     onClose();
   };
 
+  // Uses CSS variables — works in both light and dark mode
   const inputStyle = {
-    backgroundColor: '#f4fbf7',
+    backgroundColor: 'var(--bg-page)',
     border: '1px solid var(--border-card)',
     color: 'var(--text-primary)',
     borderRadius: '10px',
@@ -81,10 +82,10 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
 
   const labelStyle = {
     fontSize: '11px',
-    fontWeight: '600',
+    fontWeight: '700',
     color: 'var(--text-muted)',
     textTransform: 'uppercase',
-    letterSpacing: '0.05em',
+    letterSpacing: '0.06em',
     marginBottom: '6px',
     display: 'block',
   };
@@ -94,15 +95,12 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(10, 22, 40, 0.5)' }}
+      style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className="w-full max-w-md rounded-2xl p-6 flex flex-col gap-4"
-        style={{
-          backgroundColor: 'var(--bg-card)',
-          boxShadow: '0 24px 64px rgba(0,0,0,0.15)',
-        }}
+        className="card w-full max-w-md p-6 flex flex-col gap-4"
+        style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}
       >
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -111,20 +109,26 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
           </h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100"
-            style={{ color: 'var(--text-muted)' }}
+            className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+            style={{
+              color: 'var(--text-muted)',
+              backgroundColor: 'var(--bg-page)',
+              border: '1px solid var(--border-card)',
+            }}
           >
             <X size={16} />
           </button>
         </div>
 
         {/* Type toggle */}
-        <div className="flex rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-card)' }}>
+        <div
+          className="card p-5 flex rounded-xl overflow-hidden"
+        >
           {[TRANSACTION_TYPES.DEBIT, TRANSACTION_TYPES.CREDIT].map((t) => (
             <button
               key={t}
               onClick={() => setForm((f) => ({ ...f, type: t }))}
-              className="flex-1 py-2 text-xs font-semibold capitalize transition-colors"
+              className="flex-1 py-2.5 text-xs font-bold capitalize transition-colors"
               style={{
                 backgroundColor: form.type === t
                   ? t === 'credit' ? '#059669' : '#e11d48'
@@ -139,6 +143,7 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
 
         {/* Form grid */}
         <div className="grid grid-cols-2 gap-3">
+
           {/* Merchant */}
           <div className="col-span-2">
             <label style={labelStyle}>Merchant</label>
@@ -151,7 +156,9 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
               value={form.merchant}
               onChange={(e) => setForm((f) => ({ ...f, merchant: e.target.value }))}
             />
-            {errors.merchant && <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.merchant}</p>}
+            {errors.merchant && (
+              <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.merchant}</p>
+            )}
           </div>
 
           {/* Description */}
@@ -178,7 +185,9 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
               value={form.amount}
               onChange={(e) => setForm((f) => ({ ...f, amount: e.target.value }))}
             />
-            {errors.amount && <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.amount}</p>}
+            {errors.amount && (
+              <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.amount}</p>
+            )}
           </div>
 
           {/* Date */}
@@ -188,12 +197,15 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
               style={{
                 ...inputStyle,
                 borderColor: errors.date ? '#e11d48' : 'var(--border-card)',
+                colorScheme: 'dark light',
               }}
               type="date"
               value={form.date}
               onChange={(e) => setForm((f) => ({ ...f, date: e.target.value }))}
             />
-            {errors.date && <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.date}</p>}
+            {errors.date && (
+              <p className="text-xs mt-1" style={{ color: '#e11d48' }}>{errors.date}</p>
+            )}
           </div>
 
           {/* Category */}
@@ -229,9 +241,9 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
         <div className="flex gap-3 mt-1">
           <button
             onClick={onClose}
-            className="flex-1 py-2.5 rounded-xl text-sm font-semibold"
+            className="flex-1 py-2.5 rounded-xl text-sm font-semibold transition-colors"
             style={{
-              backgroundColor: '#f4fbf7',
+              backgroundColor: 'var(--bg-page)',
               border: '1px solid var(--border-card)',
               color: 'var(--text-muted)',
             }}
@@ -240,7 +252,7 @@ export default function TransactionModal({ isOpen, onClose, editData }) {
           </button>
           <button
             onClick={handleSubmit}
-            className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white"
+            className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-colors"
             style={{ backgroundColor: 'var(--accent)' }}
           >
             {editData ? 'Save Changes' : 'Add Transaction'}

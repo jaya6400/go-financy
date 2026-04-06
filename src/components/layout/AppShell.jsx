@@ -8,7 +8,7 @@ export default function AppShell() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden" style={{ backgroundColor: 'var(--bg-page)' }}>
+    <div className="card p-5 flex h-screen overflow-hidden">
       <div
         className="hidden lg:block shrink-0 transition-all duration-300"
         style={{ width: collapsed ? '60px' : '220px' }}
