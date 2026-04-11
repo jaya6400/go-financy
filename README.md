@@ -225,4 +225,4 @@ I focused on getting the architecture right first (store, data model, utils) bef
 
 ---
 
-> Built with React + Vite as a frontend screening assignment for Zorvyn (April 2026)
+> Built with React + Vite as a frontend centric focus on UI UX Dashboard development
