@@ -1,6 +1,6 @@
 # GoFinancy — Personal Finance Dashboard
 
-A clean, interactive personal finance dashboard built as a frontend screening assignment for Zorvyn. GoFinancy helps users track financial activity, understand spending patterns, and manage transactions — with support for role-based access, dark mode, and data export.
+A clean, interactive personal finance dashboard built as a frontend centric UI UX professional mindset. GoFinancy helps users track financial activity, understand spending patterns, and manage transactions — with support for role-based access, dark mode, and data export.
 
 ---
 
